@@ -1,56 +1,79 @@
+<?php
+require_once('../Modelo/Cotizacion.php');
+require_once('../Modelo/CrudCotizacion.php');
+
+
+$CrudCotizacion = new CrudCotizacion();
+$Cotizacion = $CrudCotizacion::ObtenerCotizacion($_GET['IdCotizacion']);
+
+$mysqli = new mysqli('localhost', 'root', '', 'bdphp_jf');
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Document</title>
-
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
      <div class="container col-md-6">
-          <h1 align="center">Crear Cotizacion</h1>
-
-          <form action="" method="post">
+          <h1 align="center">Editar Cotizacion</h1>
+          <form action="../Controlador/ControladorCotizacion.php" method="post">
+               <div class="form-row" >
+                    <div class="form-group col-md-2">
+                         <label for="">Cotización N°</label>
+                         <input type="text" class="form-control" name="IdCotizacion" id="IdCotizacion" value="<?php echo $Cotizacion->getIdCotizacion();?>" readonly>
+                    </div>
+               </div>
 
                <div class="form-row" >
                     <div class="form-group col-md-4">
                          <label for="">Empresa</label>
                          <select id="IdEmpresa"  name= "IdEmpresa" class="form-control">
-                              <option value="" >Seleccione una Empresa</option>
+                              <!-- <option value="" >Seleccione una Empresa</option>
                               <option value="1" >Empresa A</option>
                               <option value="2" >Empresa B</option>
-                              <option value="3" >Empresa C</option>
+                              <option value="3" >Empresa C</option> -->
+                              <option value="0" >Seleccione una Empresa</option>
+                              <?php
+                              $query = $mysqli -> query ("SELECT * FROM empresa");
+                              while ($valores = mysqli_fetch_array($query)) {
+                              echo '<option value="'.$valores[IdEmpresa].'">'.$valores[Empresa].'</option>';
+                              }
+                              ?>
                          </select>
-                         
                     </div>
                     <div class="form-group col-md-4">
                          <label for="inputState">Estado</label>
-                         <input type="text" class="form-control" id="Estado" name="Estado">
+                         <input type="text" class="form-control" id="Estado" name="Estado" value="<?php echo $Cotizacion->getEstado();?>">
                     </div>
                     <div class="form-group col-md-4">
                          <label for="inputPassword4">Metros cubicos</label>
-                         <input type="text" class="form-control" id="Metros_Cubicos" name="Metros_Cubicos">
+                         <input type="text" class="form-control" id="Metros_Cubicos" name="Metros_Cubicos" value="<?php echo $Cotizacion->getMetros_Cubicos();?>">
                     </div>
                </div>
                <div class="form-row">
                     <div class="form-group col-md-4">
                          <label for="">Valor Metro Cubico</label>
-                         <input type="text" class="form-control" id="Valor_Metro" name="Valor_Metro">
+                         <input type="text" class="form-control" id="Valor_Metro" name="Valor_Metro" value="<?php echo $Cotizacion->getValor_Metro();?>">
                     </div>
                     <div class="form-group col-md-4">
                          <label for="">IVA</label>
-                         <input type="text" class="form-control" id="Iva" name="Iva">
+                         <input type="text" class="form-control" id="Iva" name="Iva" value="<?php echo $Cotizacion->getIva();?>">
                     </div>
                     <div class="form-group col-md-4">
                          <label for="inputPassword4">Valor Total</label>
-                         <input type="text" class="form-control" id="Valor_Total" name="Valor_Total">
+                         <input type="text" class="form-control" id="Valor_Total" name="Valor_Total" value="<?php echo $Cotizacion->getValor_Total();?>">
                     </div>
                </div>
                <div class="mb-3">
                     <label for="validationTextarea">Observaciones</label>
-                         <textarea class="form-control " id="Observaciones" name="Observaciones" placeholder="Ingresa las observaciones" ></textarea>
+                         <textarea class="form-control " id="Observaciones" name="Observaciones" placeholder="<?php echo $Cotizacion->getObservaciones();?>"></textarea>
                </div>
                <input type="hidden" name="Editar" id="Editar">
                <button type="submit" class="btn btn-primary">Editar Cotizacion</button>

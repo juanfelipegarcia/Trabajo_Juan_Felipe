@@ -1,3 +1,8 @@
+<?php
+$mysqli = new mysqli('localhost', 'root', '', 'bdphp_jf');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,16 +17,20 @@
      <div class="container col-md-6">
           <h1 align="center">Crear Cotizacion</h1>
 
-          <form action="../../Controlador/ControladorCotizacion.php" method="post">
+          <form action="../Controlador/ControladorCotizacion.php" method="post">
 
                <div class="form-row" >
                     <div class="form-group col-md-4">
                          <label for="">Empresa</label>
                          <select id="IdEmpresa"  name= "IdEmpresa" class="form-control">
-                              <option value="" >Seleccione una Empresa</option>
-                              <option value="1" >Empresa A</option>
-                              <option value="2" >Empresa B</option>
-                              <option value="3" >Empresa C</option>
+                              <option value="0" >Seleccione una Empresa</option>
+                              <?php
+                              $query = $mysqli -> query ("SELECT * FROM empresa");
+                              while ($valores = mysqli_fetch_array($query)) {
+                              echo '<option value="'.$valores[IdEmpresa].'">'.$valores[Empresa].'</option>';
+                              }
+                              ?>
+
                          </select>
                          
                     </div>

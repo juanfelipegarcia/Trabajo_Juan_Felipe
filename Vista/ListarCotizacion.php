@@ -1,12 +1,12 @@
 <?php
 
-require_once('../Modelo/Cotizacion/Cotizacion.php');
-require_once('../Modelo/Cotizacion/CrudCotizacion.php');
+require_once('../Modelo/Cotizacion.php');
+require_once('../Modelo/CrudCotizacion.php');
 
 $CrudCotizacion = new CrudCotizacion();
 $ListaCotizacion = $CrudCotizacion->ListarCotizacion();
 
-var_dump($ListaCotizacion);
+//var_dump($ListaCotizacion);
 
 ?>
 <!DOCTYPE html>
@@ -27,29 +27,29 @@ var_dump($ListaCotizacion);
                     <a class="nav-link active" href="CrearCotizacion.php">Crear Cotizacion</a>
                </li>
           </ul>
-          <table class="table table-responsive">
+          <table class="table table-bordered">
                <thead class="thead-dark">
                     <tr>
                     <th scope="col">Cotización</th>
                     <th scope="col">Empresa</th>
                     <th scope="col">Estado</th>
-                    <th scope="col">METROS CUBICOS</th>
-                    <th scope="col">VALOR METRO</th>
-                    <th scope="col">IVA</th>
-                    <th scope="col">VALOR TOTAL</th>
-                    <th scope="col">OBSERVACIONES</th>
-                    <th scope="col">EDITAR</th>
-                    <th scope="col">ELIMINAR</th>
+                    <th scope="col">Metros Cubicos</th>
+                    <th scope="col">Valor Metro</th>
+                    <th scope="col">Iva</th>
+                    <th scope="col">Valor Total</th>
+                    <th scope="col">Observaciones</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Eliminar</th>
                     </tr>
                </thead>
                <tbody>
-               <!-- <?php
+               <?php
                foreach($ListaCotizacion as $Cotizacion) {
                     ?>
                     <tr>
                     <td><?php echo $Cotizacion->getIdCotizacion();?></td>
                     <td><?php echo $Cotizacion->getIdEmpresa();?></td>
-                    <td><?php echo $Cotizacion->getIdEstado();?></td>
+                    <td><?php echo $Cotizacion->getEstado();?></td>
                     <td><?php echo $Cotizacion->getMetros_cubicos();?></td>
                     <td><?php echo $Cotizacion->getValor_Metro();?></td>
                     <td><?php echo $Cotizacion->getIva();?></td>
@@ -59,13 +59,13 @@ var_dump($ListaCotizacion);
                     <a href="EditarCotizacion.php?IdCotizacion=<?php echo $Cotizacion->getIdCotizacion();?>">Editar</a> 
                     </td>
                     <td>
-                    <a href="../../Controlador/ControladorCotizacion.php?IdCotizacion=<?php echo $Cotizacion->getIdCotizacion();?>&Accion=EliminarCotizacion">Eliminar</a> 
+                    <a href="../Controlador/ControladorCotizacion.php?IdCotizacion=<?php echo $Cotizacion->getIdCotizacion();?>&Accion=EliminarCotizacion">Eliminar</a> 
                     </td>
 
                     
                     <?php
                }
-               ?> -->
+               ?>
                </tbody>
           </table>
      </div>

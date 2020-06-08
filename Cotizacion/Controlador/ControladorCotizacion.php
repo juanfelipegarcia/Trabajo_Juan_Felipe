@@ -1,5 +1,5 @@
 <?php
-
+require_once('../../conexion.php');
 require_once('../Modelo/Cotizacion.php');
 require_once('../Modelo/CrudCotizacion.php');
 

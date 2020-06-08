@@ -1,5 +1,5 @@
 <?php
-
+require_once('../../conexion.php');
 require_once('../Modelo/Cotizacion.php');
 require_once('../Modelo/CrudCotizacion.php');
 
@@ -21,12 +21,17 @@ $ListaCotizacion = $CrudCotizacion->ListarCotizacion();
 </head>
 <body>
      <div class="container">
-     <h1 align="center">COTIZACIONES</h1>
-          <ul class="nav">
+     <h1 align="center">COTIZACIÓNES</h1>
+     <br>
+          <ul class="nav nav-fill">
                <li class="nav-item">
-                    <a class="nav-link active" href="CrearCotizacion.php">Crear Cotizacion</a>
+               <button type="button" class="btn btn-outline-info"><a class="nav-link active" href="CrearCotizacion.php">Crear Cotizacion</a></button>
+               </li>
+               <li class="nav-item">
+               <button type="button" class="btn btn-outline-info"><a class="nav-link active" href="../../TCPDF/examples/reportepdfcotizacion.php" target="_blank">Reporte de Cotizaciones</a></button>
                </li>
           </ul>
+          <br>
           <table class="table table-bordered">
                <thead class="thead-dark">
                     <tr>

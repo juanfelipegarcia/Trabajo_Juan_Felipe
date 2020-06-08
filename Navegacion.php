@@ -33,7 +33,7 @@
                     <div class="card">
                          <div class="card-body">
                          <h5 class="card-title">Cotizacion</h5>
-                         <a href="Vista/ListarCotizacion.php" class="btn btn-primary">Ir a Cotizacion</a>
+                         <a href="Cotizacion/Vista/ListarCotizacion.php" class="btn btn-primary">Ir a Cotizacion</a>
                          </div>
                     </div>
                </div>

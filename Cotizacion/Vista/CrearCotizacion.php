@@ -15,8 +15,8 @@ $mysqli = new mysqli('localhost', 'root', '', 'bdphp_jf');
 </head>
 <body>
      <div class="container col-md-6">
-          <h1 align="center">Crear Cotizacion</h1>
-
+          <h1 align="center">Crear Cotización</h1>
+          <br>
           <form action="../Controlador/ControladorCotizacion.php" method="post">
 
                <div class="form-row" >

@@ -35,7 +35,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'bdphp_jf');
                <button type="button" class="btn btn-outline-info"><a class="nav-link active" href="../../CerrarSeccion.php">Cerrar Seccion</a></button>
                </li>
           </ul>
-          <h1 align="center">Editar Cotizacion</h1>
+          <h1 align="center">EDITAR Cotizacion</h1>
           <form action="../Controlador/ControladorCotizacion.php" method="post">
                <div class="form-row" >
                     <div class="form-group col-md-2">

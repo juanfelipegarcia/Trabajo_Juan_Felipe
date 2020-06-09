@@ -18,9 +18,11 @@ $mysqli = new mysqli('localhost', 'root', '', 'bdphp_jf');
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Document</title>
+     <link rel="stylesheet" href="../css/estiloCrearCotizacion.css">
 
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     
 </head>
 <body>
      <div class="container col-md-6">
@@ -31,12 +33,12 @@ $mysqli = new mysqli('localhost', 'root', '', 'bdphp_jf');
           </ul>
           <h1 align="center">Crear Cotización</h1>
           <br>
-          <form action="../Controlador/ControladorCotizacion.php" method="post">
+          <form action="../Controlador/ControladorCotizacion.php" method="post" id="FrmCrearCotizacion" name="FrmCrearCotizacion">
 
                <div class="form-row" >
                     <div class="form-group col-md-4">
                          <label for="">Empresa</label>
-                         <label style="color: red;" id="validacion_empresa"></label>
+                         <label class="validacion" id="validacion_empresa"></label>
                          <select id="IdEmpresa"  name= "IdEmpresa" class="form-control">
                               <option value="0" >Seleccione una Empresa</option>
                               <?php
@@ -45,39 +47,48 @@ $mysqli = new mysqli('localhost', 'root', '', 'bdphp_jf');
                               echo '<option value="'.$valores[IdEmpresa].'">'.$valores[Empresa].'</option>';
                               }
                               ?>
-
                          </select>
-                         <label style="color: red;" id="validacion_empresa2"></label>
+                         <label class="validacion" id="validacion_empresa2"></label>
                          
                     </div>
                     <div class="form-group col-md-4">
                          <label for="inputState">Estado</label>
-                         <label style="color: red;" id="validacion_Estado"></label>
+                         <label class="validacion" id="validacion_Estado"></label>
                          <input type="text" class="form-control" id="Estado" name="Estado">
-                         <label style="color: red;" id="validacion_Estado2"></label>
+                         <label class="validacion" id="validacion_Estado2"></label>
                     </div>
                     <div class="form-group col-md-4">
                          <label for="inputPassword4">Metros cubicos</label>
+                         <label class="validacion" id="validacion_MetrosCubicos"></label>
                          <input type="text" class="form-control solo_numeros" id="Metros_Cubicos" name="Metros_Cubicos">
+                         <label class="validacion" id="validacion_MetrosCubicos2"></label>
                     </div>
                </div>
                <div class="form-row">
                     <div class="form-group col-md-4">
                          <label for="">Valor Metro Cubico</label>
+                         <label class="validacion" id="validacion_ValorMetro"></label>
                          <input type="text" class="form-control  solo_numeros" id="Valor_Metro" name="Valor_Metro" onchange="valor_Total()">
+                         <label class="validacion" id="validacion_ValorMetro2"></label>
                     </div>
                     <div class="form-group col-md-4">
                          <label for="">IVA</label>
+                         <label class="validacion" id="validacion_Iva"></label>
                          <input type="text" class="form-control solo_numeros" id="Iva" name="Iva" readonly>
+                         <label class="validacion" id="validacion_Iva2"></label>
                     </div>
                     <div class="form-group col-md-4">
                          <label for="inputPassword4">Valor Total</label>
+                         <label class="validacion" id="validacion_ValorTotal"></label>
                          <input type="text" class="form-control solo_numeros" id="Valor_Total" name="Valor_Total" readonly>
+                         <label class="validacion" id="validacion_ValorTotal2"></label>
                     </div>
                </div>
                <div class="mb-3">
                     <label for="validationTextarea">Observaciones</label>
+                    <label class="validacion" id="validacion_Observa"></label>
                          <textarea class="form-control " id="Observaciones" name="Observaciones" placeholder="Ingresa las observaciones" ></textarea>
+                         <label class="validacion" id="validacion_Observa2"></label>
                </div>
                <input type="hidden" name="Crear" id="Crear">
                <button type="submit" class="btn btn-primary">Crear Cotizacion</button>

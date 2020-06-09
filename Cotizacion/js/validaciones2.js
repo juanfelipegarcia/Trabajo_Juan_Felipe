@@ -21,7 +21,7 @@ function valor_Total()
 
 
 $(document).ready(function() {
-     $("#FrmCrearCotizacion").submit(function(event){
+     $("#FrmEditarCotizacion").submit(function(event){
           event.preventDefault();
 
           let validado=0;
@@ -95,7 +95,7 @@ $(document).ready(function() {
 
           if (validado==7)
           {
-               document.FrmCrearCotizacion.submit();
+               document.FrmEditarCotizacion.submit();
           }
           else{
                alert("Campos pendientes por validar");
@@ -105,44 +105,3 @@ $(document).ready(function() {
      });
 });
 
-
-// $(document).ready(function(){
-//      $("#Crear").click(function(){
-
-//           let validado = 0;
-
-//                     if($("#IdEmpresa").val().length == 0 )
-//                     {
-//                          $("#validacion_empresa").text("*");
-//                          $("#validacion_empresa2").text("Debe ingresar la Empresa");
-//                     }else
-//                     {
-//                          $("#validacion_empresa").text("");
-//                          $("#validacion_empresa2").text("");
-//                          validado++;
-//                     }
-
-//                     if($("#Estado").val().length == 0 )
-//                     {
-//                          $("#validacion_Estado").text("*");
-//                          $("#validacion_Estado2").text("Debe ingresar la Clave");
-//                     }else
-//                     {
-//                          $("#validacion_Estado").text("");
-//                          $("#validacion_Estado2").text("");
-//                          validado++;
-//                     }
-
-//                     if (validado == 2) {
-                         
-                    
-
-//                     }
-//                     else {
-//                          alert("Campos pendientes por validar");
-//                     }
-
-
-
-//      });
-// });

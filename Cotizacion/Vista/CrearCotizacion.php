@@ -36,6 +36,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'bdphp_jf');
                <div class="form-row" >
                     <div class="form-group col-md-4">
                          <label for="">Empresa</label>
+                         <label style="color: red;" id="validacion_empresa"></label>
                          <select id="IdEmpresa"  name= "IdEmpresa" class="form-control">
                               <option value="0" >Seleccione una Empresa</option>
                               <?php
@@ -46,11 +47,14 @@ $mysqli = new mysqli('localhost', 'root', '', 'bdphp_jf');
                               ?>
 
                          </select>
+                         <label style="color: red;" id="validacion_empresa2"></label>
                          
                     </div>
                     <div class="form-group col-md-4">
                          <label for="inputState">Estado</label>
+                         <label style="color: red;" id="validacion_Estado"></label>
                          <input type="text" class="form-control" id="Estado" name="Estado">
+                         <label style="color: red;" id="validacion_Estado2"></label>
                     </div>
                     <div class="form-group col-md-4">
                          <label for="inputPassword4">Metros cubicos</label>

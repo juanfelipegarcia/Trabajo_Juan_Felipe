@@ -10,19 +10,14 @@
     
 </head>
 <body class="text-center">
-     <form class="form-signin">
+     <form class="form-signin" action="Usuario/Controlador/ControladorUsuario.php" method="post">
           <img class="mb-4" src="img/kreemo_nombres.png" alt="" width="100" height="100">
           <h1 class="h3 mb-3 font-weight-normal">Ingreso de Usuario</h1>
           <label for="text">Usuario</label>
-          <input type="text" id="" name="" class="form-control" placeholder="Ingrese Usuario">
+          <input type="text" id="Nombre" name="Nombre" class="form-control" placeholder="Ingrese Usuario">
           <label for="inputPassword">Password</label>
-          <input type="password" id="" name="" class="form-control" placeholder="Password" >
-          <!-- <div class="checkbox mb-3">
-          <label>
-          <input type="checkbox" value="remember-me"> Remember me
-          </label>
-          </div> -->
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+          <input type="password" id="Clave" name="Clave" class="form-control" placeholder="Digite la Clave" >
+          <button class="btn btn-lg btn-primary btn-block" type="submit" name="Acceder" id="Acceder" value="Acceder">Ingresar</button>
           <p class="mt-5 mb-3 text-muted">Kreemo Solution System &copy; 2020</p>
           </form>
 </body>

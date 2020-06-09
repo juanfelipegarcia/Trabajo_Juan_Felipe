@@ -1,4 +1,12 @@
 <?php
+
+session_start();
+
+if (!(isset($_SESSION["Nombre"]))) {
+ header("location:../../Index.php");    
+}
+
+
 require_once('../../conexion.php');
 require_once('../Modelo/Cotizacion.php');
 require_once('../Modelo/CrudCotizacion.php');
@@ -21,6 +29,11 @@ $ListaCotizacion = $CrudCotizacion->ListarCotizacion();
 </head>
 <body>
      <div class="container">
+          <ul class="nav justify-content-end">
+               <li class="nav-item">
+               <button type="button" class="btn btn-outline-info"><a class="nav-link active" href="../../CerrarSeccion.php">Cerrar Seccion</a></button>
+               </li>
+          </ul>
      <h1 align="center">COTIZACIÓNES</h1>
      <br>
           <ul class="nav nav-fill">
@@ -73,6 +86,8 @@ $ListaCotizacion = $CrudCotizacion->ListarCotizacion();
                ?>
                </tbody>
           </table>
+
+          <button type="button" class="btn btn-outline-info"><a class="nav-link active" href="../../Navegacion.php">Volver</a></button>
      </div>
 
      

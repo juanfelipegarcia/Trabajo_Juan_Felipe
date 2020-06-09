@@ -1,3 +1,18 @@
+<?php
+
+session_start();
+
+if (!(isset($_SESSION["Nombre"]))) {
+ header("location:Index.php");    
+}
+
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +25,11 @@
 </head>
 <body>
      <div class="container">
+          <ul class="nav justify-content-end">
+          <li class="nav-item">
+               <button type="button" class="btn btn-outline-info"><a class="nav-link active" href="CerrarSeccion.php">Cerrar Seccion</a></button>
+               </li>
+          </ul>
           <h1 align="center">SELECCIONE EL MODULO</h1>
           <br>
           <div class="row" align="center">

@@ -58,7 +58,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'bdphp_jf');
                          <label class="validacion" id="validacion_Estado2"></label>
                     </div>
                     <div class="form-group col-md-4">
-                         <label for="inputPassword4">Metros cubicos</label>
+                         <label for="inputPassword4">Metros m<sup>3</sup></label>
                          <label class="validacion" id="validacion_MetrosCubicos"></label>
                          <input type="text" class="form-control solo_numeros" id="Metros_Cubicos" name="Metros_Cubicos">
                          <label class="validacion" id="validacion_MetrosCubicos2"></label>
@@ -66,7 +66,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'bdphp_jf');
                </div>
                <div class="form-row">
                     <div class="form-group col-md-4">
-                         <label for="">Valor Metro Cubico</label>
+                         <label for="">Valor Metro <sup>3</sup></label>
                          <label class="validacion" id="validacion_ValorMetro"></label>
                          <input type="text" class="form-control  solo_numeros" id="Valor_Metro" name="Valor_Metro" onchange="valor_Total()">
                          <label class="validacion" id="validacion_ValorMetro2"></label>

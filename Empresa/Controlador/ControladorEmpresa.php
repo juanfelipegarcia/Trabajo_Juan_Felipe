@@ -1,5 +1,8 @@
 <?php
 
+require_once('../../conexion.php');
+require_once('../Modelo/Empresa.php');
+require_once('../Modelo/CrudEmpresa.php');
 
 $Empresa = new Empresa();
 $CrudEmpresa =new CrudEmpresa();
@@ -16,7 +19,7 @@ if (isset($_POST["Crear"])) {
 }
 elseif(isset($_POST["Editar"])) {
 
-     $Empresa->setIdEmpresa(null);
+     $Empresa->setIdEmpresa($_POST["IdEmpresa"]);
      $Empresa->setEmpresa($_POST["Empresa"]);
      $Empresa->setCiudad($_POST["Ciudad"]);
      $Empresa->setDireccion($_POST["Direccion"]);

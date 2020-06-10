@@ -28,11 +28,11 @@
 require_once('tcpdf_include.php');
 
 require_once('../../Conexion.php');
-require_once('../../Cotizacion/Modelo/Cotizacion.php');
-require_once('../../Cotizacion/Modelo/CrudCotizacion.php');
+require_once('../../Empresa/Modelo/Empresa.php');
+require_once('../../Empresa/Modelo/CrudEmpresa.php');
 
-$CrudCotizacion = new CrudCotizacion();
-$ListaCotizacion = $CrudCotizacion->ListarCotizacion();
+$CrudEmpresa = new CrudEmpresa();
+$ListaEmpresa = $CrudEmpresa->ListarEmpresa();
 
 // extend TCPF with custom functions
 class MYPDF extends TCPDF {
@@ -57,7 +57,7 @@ class MYPDF extends TCPDF {
 		$this->SetLineWidth(0.3);
 		$this->SetFont('', 'B');
 		// Header
-		$w = array(30, 40, 30, 40, 30, 20, 30,47);
+		$w = array(65, 65, 65, 72);
 		$num_headers = count($header);
 		for($i = 0; $i < $num_headers; ++$i) {
 			$this->Cell($w[$i], 7, $header[$i], 1, 0, 'C', 1);
@@ -70,14 +70,10 @@ class MYPDF extends TCPDF {
 		// Data
 		$fill = 0;
 		foreach($data as $row) {
-			$this->Cell($w[0], 6, $row->getIdCotizacion(), 'LR', 0, 'C', $fill);
-			$this->Cell($w[1], 6, $row->getIdEmpresa(), 'LR', 0, 'C', $fill);
-			$this->Cell($w[2], 6, $row->getEstado(), 'LR', 0, 'C', $fill);
-			$this->Cell($w[3], 6, $row->getMetros_Cubicos(), 'LR', 0, 'C', $fill);
-			$this->Cell($w[4], 6, $row->getValor_Metro(), 'LR', 0, 'C', $fill);
-			$this->Cell($w[5], 6, $row->getIva(), 'LR', 0, 'C', $fill);
-			$this->Cell($w[6], 6, $row->getValor_Total(), 'LR', 0, 'C', $fill);
-			$this->Cell($w[7], 6, $row->getObservaciones(), 'LR', 0, 'L', $fill);
+			$this->Cell($w[0], 6, $row->getIdEmpresa(), 'LR', 0, 'C', $fill);
+			$this->Cell($w[1], 6, $row->getEmpresa(), 'LR', 0, 'C', $fill);
+			$this->Cell($w[2], 6, $row->getCiudad(), 'LR', 0, 'C', $fill);
+			$this->Cell($w[3], 6, $row->getDireccion(), 'LR', 0, 'C', $fill);
 			$this->Ln();
 			$fill=!$fill;
 		}
@@ -96,7 +92,7 @@ $pdf->SetSubject('TCPDF Tutorial');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
 // set default header data
-$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' Listado Cotizaciones', PDF_HEADER_STRING);
+$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' Listado Empresas', PDF_HEADER_STRING);
 
 // set header and footer fonts
 $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
@@ -131,18 +127,18 @@ $pdf->SetFont('helvetica', '', 12);
 $pdf->AddPage();
 
 // column titles
-$header = array('Cotización N°', 'Empresa', 'Estado', 'Metros Cubicos', 'Valor Metro', 'Iva', 'Valor Total', 'Obervaciones');
+$header = array('Empresa N°', 'Empresa', 'Ciudad', 'Direccion');
 
 // data loading
 $data = $pdf->LoadData('data/table_data_demo.txt');
 
 // print colored table
-$pdf->ColoredTable($header, $ListaCotizacion);
+$pdf->ColoredTable($header, $ListaEmpresa);
 
 // ---------------------------------------------------------
 ob_end_clean();
 // close and output PDF document
-$pdf->Output('ListadoCotizacion.pdf', 'I');
+$pdf->Output('ListadoEmpresas.pdf', 'I');
 
 //============================================================+
 // END OF FILE

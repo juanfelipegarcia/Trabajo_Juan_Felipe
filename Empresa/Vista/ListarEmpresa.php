@@ -1,3 +1,22 @@
+<?php
+
+session_start();
+
+if (!(isset($_SESSION["Nombre"]))) {
+ header("location:../../Index.php");    
+}
+
+
+require_once('../../conexion.php');
+require_once('../Modelo/Empresa.php');
+require_once('../Modelo/CrudEmpresa.php');
+
+$CrudEmpresa = new CrudEmpresa();
+$ListaEmpresa = $CrudEmpresa->ListarEmpresa();
+
+//var_dump($ListaCotizacion);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +41,7 @@
                <button type="button" class="btn btn-outline-info"><a class="nav-link active" href="CrearEmpresa.php">Crear Nueva Empresa</a></button>
                </li>
                <li class="nav-item">
-               <button type="button" class="btn btn-outline-info"><a class="nav-link active" href="" target="_blank">Reporte de  Empresas</a></button>
+               <button type="button" class="btn btn-outline-info"><a class="nav-link active" href="../../TCPDF/examples/reportepdfempresa.php" target="_blank">Reporte de  Empresas</a></button>
                </li>
           </ul>
           <br>
@@ -38,23 +57,25 @@
                     </tr>
                </thead>
                <tbody>
-               <!-- <?php
-               foreach($ListaCotizacion as $Cotizacion) {
+               <?php
+               foreach($ListaEmpresa as $Empresa) {
                     ?>
                     <tr>
-                    <td><?php echo $Cotizacion->getIdCotizacion();?></td>
-                    <td><?php echo $Cotizacion->getIdEmpresa();?></td>
+                    <td><?php echo $Empresa->getIdEmpresa();?></td>
+                    <td><?php echo $Empresa->getEmpresa();?></td>
+                    <td><?php echo $Empresa->getCiudad();?></td>
+                    <td><?php echo $Empresa->getDireccion();?></td>
                     <td>
-                    <a href="EditarCotizacion.php?IdCotizacion=<?php echo $Cotizacion->getIdCotizacion();?>">Editar</a> 
+                    <a href="EditarEmpresa.php?IdEmpresa=<?php echo $Empresa->getIdEmpresa();?>">Editar</a> 
                     </td>
                     <td>
-                    <a href="../Controlador/ControladorCotizacion.php?IdCotizacion=<?php echo $Cotizacion->getIdCotizacion();?>&Accion=EliminarCotizacion">Eliminar</a> 
+                    <a href="../Controlador/ControladorEmpresa.php?IdEmpresa=<?php echo $Empresa->getIdEmpresa();?>&Accion=EliminarEmpresa">Eliminar</a> 
                     </td>
 
                     
                     <?php
                }
-               ?> -->
+               ?>
                </tbody>
           </table>
 

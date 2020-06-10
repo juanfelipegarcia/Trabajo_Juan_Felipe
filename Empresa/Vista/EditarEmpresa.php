@@ -1,4 +1,22 @@
+<?php
 
+session_start();
+
+if (!(isset($_SESSION["Nombre"]))) {
+ header("location:../../Index.php");    
+}
+
+require_once('../../conexion.php');
+require_once('../Modelo/Empresa.php');
+require_once('../Modelo/CrudEmpresa.php');
+
+
+$CrudEmpresa = new CrudEmpresa();
+$Empresa = $CrudEmpresa::ObtenerEmpresa($_GET['IdEmpresa']);
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,11 +38,11 @@
           </ul>
           <h1 align="center">Editar Empresa</h1>
           <br>
-          <form action="" method="post" id="FrmEditarEmpresa" name="FrmCrearEmpresa">
+          <form action="../Controlador/ControladorEmpresa.php" method="post" id="FrmEditarEmpresa" name="FrmCrearEmpresa">
                <div class="form-row" >
                     <div class="form-group col-md-3">
                          <label for="">Empresa N°</label>
-                         <input type="text" class="form-control" name="IdEmpresa" id="IdEmpresa"  readonly>
+                         <input type="text" class="form-control" name="IdEmpresa" id="IdEmpresa" value="<?php echo $Empresa->getIdEmpresa();?>" readonly>
                     </div>
                </div>
 
@@ -32,7 +50,7 @@
                     <div class="form-group col-md-12">
                          <label for="">Nombre de la Empresa</label>
                          <label class="validacion" id="validacion_empresa"></label>
-                         <input type="text" class="form-control" id="Empresa" name="Empresa">
+                         <input type="text" class="form-control" id="Empresa" name="Empresa" value="<?php echo $Empresa->getEmpresa();?>">
                          <label class="validacion" id="validacion_empresa2"></label>
                     </div>
                </div>
@@ -40,7 +58,7 @@
                     <div class="form-group col-md-12">
                          <label for="inputState">Ciudad</label>
                          <label class="validacion" id="validacion_Ciudad"></label>
-                         <input type="text" class="form-control" id="Ciudad" name="Ciudad">
+                         <input type="text" class="form-control" id="Ciudad" name="Ciudad" value="<?php echo $Empresa->getCiudad();?>">
                          <label class="validacion" id="validacion_Ciudad2"></label>
                     </div>
                </div>
@@ -48,13 +66,13 @@
                     <div class="form-group col-md-12">
                          <label for="inputState">Direccion</label>
                          <label class="validacion" id="validacion_Direccion"></label>
-                         <input type="text" class="form-control" id="Direccion" name="Direccion">
+                         <input type="text" class="form-control" id="Direccion" name="Direccion" value="<?php echo $Empresa->getDireccion();?>">
                          <label class="validacion" id="validacion_Direccion2"></label>
                     </div>
                </div>
 
                <input type="hidden" name="Editar" id="Editar">
-               <button type="submit" class="btn btn-primary">Crear Empresa</button>
+               <button type="submit" class="btn btn-primary">Editar Empresa</button>
                </form>
                <br>
                <div class="form-row" align="center">

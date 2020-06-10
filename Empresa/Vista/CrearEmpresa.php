@@ -1,4 +1,13 @@
+<?php
 
+session_start();
+
+if (!(isset($_SESSION["Nombre"]))) {
+ header("location:../../Index.php");    
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +29,7 @@
           </ul>
           <h1 align="center">Crear Empresa</h1>
           <br>
-          <form action="" method="post" id="FrmCrearEmpresa" name="FrmCrearEmpresa">
+          <form action="../Controlador/ControladorEmpresa.php" method="post" id="FrmCrearEmpresa" name="FrmCrearEmpresa">
 
                <div class="form-row " >
                     <div class="form-group col-md-12">
